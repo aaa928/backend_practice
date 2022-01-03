@@ -1,6 +1,7 @@
 // import middles from "../middlewares/middle"
 import routers from "express"
 import Post from "../models/post"
+import axios from "axios"
 
 let router = routers.Router();
 
@@ -59,6 +60,29 @@ router.put("/:user", (req, res) => {
             res.status(204).send()
         }
     })
+});
+
+router.put("/test/:postid", (req, res) => {
+    axios
+        .get('https://jsonplaceholder.typicode.com/posts/' + req.params.postid)
+        .then(response => {
+
+            let post = {
+                user: '61add3bde1d0ae69d95951a9',
+                title: response.data.title,
+                body: response.data.body
+            };
+
+            let posts = new Post(post)
+            posts.save(function (err, output) {
+                if (err) {
+                    console.log('게시글 저장 실패 : ', err)
+                } else {
+                    console.log('게시글 저장 성공 : ')
+                    res.status(200).send(posts)
+                }
+            })
+        })
 });
 
 // module.exports = router;

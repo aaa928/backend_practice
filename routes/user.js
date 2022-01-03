@@ -29,10 +29,10 @@ router.post("/", middleware, (req, res) => {
     })
 });
 
-router.get("/:id", middleware2, async (req, res) => {
+router.get("/:id", (req, res) => {
     // async 랑 await 는 언제 넣어줘야하는지?
-    console.log(req.test)
-    await User.findById(req.params.id, function (err, output) {
+    // console.log('dddddddddddddddd' + req.params)
+    User.findById(req.params.id, function (err, output) {
         if (err) {
             console.log('실패 : ', err)
         } else {

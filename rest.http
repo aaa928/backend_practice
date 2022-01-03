@@ -3,15 +3,13 @@ POST http://localhost:3000/user HTTP/1.1
 Content-Type: application/json
 
 {    
-    "name" : "미들웨어g",
-    "phone_number" : "010-2345-111122822",
+    "name" : "미들웨어ddg",
+    "phone_number" : "010-2345-11112282211",
     "gender" : "남자"    
 }
 
 ###
-GET http://localhost:3000/user/61addfaa113a7f605033157e HTTP/1.1
-61addfaa113a7f605033157e
-
+GET http://localhost:3000/user/61add3bde1d0ae69d95951a9 HTTP/1.1
 
 ###
 DELETE http://localhost:3000/user/61adf6fd6108682261072889 HTTP/1.1
@@ -59,3 +57,6 @@ Content-Type: application/json
 {    
     "title" : "제목수정해보자"
 }
+
+###
+PUT http://localhost:3000/post/test/1 HTTP/1.1

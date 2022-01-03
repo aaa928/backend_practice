@@ -12,14 +12,18 @@ Dotenv.config();
 // async : await가 사용될거라는걸 미리 알려줌
 // await : promise가 완료되길 기다림
 
-const connectDB = async () => {
-  await mongoose
+mongoose
     .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Successfully connected to mongodb'))
     .catch(e => console.error(e));
-}
 
- connectDB();
+// const connectDB = async () => {
+//   await mongoose
+//     .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(() => console.log('Successfully connected to mongodb'))
+//     .catch(e => console.error(e));
+// }
+// connectDB();
 
 console.log('11111')
 

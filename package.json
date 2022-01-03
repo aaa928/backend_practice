@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "axios" : "nodemon --exec babel-node axios_test.js"
   },
   "keywords": [],
   "author": "aaa928 <dydwn0928@gmail.com>",
