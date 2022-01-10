@@ -4,8 +4,9 @@ import mongoose from 'mongoose';
 // Define Schemes
 const UserSchema = new mongoose.Schema({
   name: { type: String, required: true},
-  phone_number: { type: String, required: true, unique: true },
-  gender: { type: String, default: '중성' }
+  phone_number: { type: String, unique: true },
+  gender: { type: String, default: '중성' },
+  blog: [{type: mongoose.Schema.Types.ObjectId, ref:"post"}]
 },
 {
   timestamps: true

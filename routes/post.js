@@ -85,5 +85,17 @@ router.put("/test/:postid", (req, res) => {
         })
 });
 
+router.post("/test2", (req, res) => {
+    Post
+        .findById(req.body.postid)
+        .populate('user')
+        .then(
+            result => { 
+                console.log(result)
+                res.status(200).send(result)
+            }
+            )        
+});
+
 // module.exports = router;
 export default router;
