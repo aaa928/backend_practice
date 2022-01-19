@@ -68,3 +68,17 @@ Content-Type: application/json
 {    
     "postid" : "61c2f3fffa23c704b972a421"
 }
+
+
+###
+GET http://localhost:3000/tracking-route HTTP/1.1
+
+
+###
+POST http://localhost:3000/login HTTP/1.1
+Content-Type: application/json
+
+{    
+    "user" : "바보2",
+    "pw" : "apple"
+}

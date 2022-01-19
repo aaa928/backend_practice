@@ -6,7 +6,8 @@ const UserSchema = new mongoose.Schema({
   name: { type: String, required: true},
   phone_number: { type: String, unique: true },
   gender: { type: String, default: '중성' },
-  blog: [{type: mongoose.Schema.Types.ObjectId, ref:"post"}]
+  blog: [{type: mongoose.Schema.Types.ObjectId, ref:"post"}],
+  password: {type: String, required: true}
 },
 {
   timestamps: true
