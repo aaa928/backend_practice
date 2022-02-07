@@ -9,7 +9,9 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/user/61add3bde1d0ae69d95951a9 HTTP/1.1
+GET http://localhost:3000/user/61add3bde1d0ae69d95951adfdfdf HTTP/1.1
+
+61add3bde1d0ae69d95951a9
 
 ###
 DELETE http://localhost:3000/user/61adf6fd6108682261072889 HTTP/1.1
@@ -19,9 +21,10 @@ PUT http://localhost:3000/user/61addeeb5157024ec70272f1 HTTP/1.1
 Content-Type: application/json
 
 {    
-    "name" : "111111"
+    "name" : "1111112223333"
 }
 
+# 61addeeb5157024ec70272f1
 ###########################
 
 ###
@@ -29,9 +32,9 @@ POST http://localhost:3000/post HTTP/1.1
 Content-Type: application/json
 
 {    
-    "user" : "홍길동",
-    "title" : "게시글제목2",
-    "body" : "블라블라2"    
+    "user" : "홍길동아빠",
+    "title" : "게시글제목2222",
+    "body" : "블라블라2222"    
 }
 
 ###
@@ -39,23 +42,23 @@ POST http://localhost:3000/post HTTP/1.1
 Content-Type: application/json
 
 {    
-    "user" : "홍길동",
-    "title" : "게시글제목2",
-    "body" : "블라블라2"    
+    "user" : "홍길동23",
+    "title" : "게시글제목23",
+    "body" : "블라블라23"    
 }
 
 ###
-GET http://localhost:3000/post/61c2f3c5fa23c704b972a41f HTTP/1.1
+GET http://localhost:3000/post/61c2f3fffa23c704b972a4211111111 HTTP/1.1
 
 ###
-DELETE http://localhost:3000/post/61c2f3c5fa23c704b972a41f HTTP/1.1
+DELETE http://localhost:3000/post/aaaaaaaaaaa HTTP/1.1
 
 ###
-PUT http://localhost:3000/post/61c2f3fffa23c704b972a421 HTTP/1.1
+PUT http://localhost:3000/post/62010730243f1947481a034f HTTP/1.1
 Content-Type: application/json
 
 {    
-    "title" : "제목수정해보자"
+    "title" : "제목수정했다222222222222222222222"
 }
 
 ###
@@ -83,6 +86,12 @@ Content-Type: application/json
     "pw" : "apple"
 }
 
+###
+GET http://localhost:3000/login HTTP/1.1
+
+###
+GET http://localhost:3000/login/user HTTP/1.1
+Cookie: connect.sid=s%3ASQl4ttz9YM1eXFphbcqZNtMpm5JtNQEp.hJwK5XuIRchnsMDiNWpH2YI5oRn4OLVNfzAoENbO%2BXg;
 
 ###
 GET http://localhost:3000/user/sample HTTP/1.1

@@ -2,6 +2,7 @@
 import routers from "express"
 import Post from "../models/post"
 import axios from "axios"
+// import { middleware, middleware2 } from "../middlewares/middle"
 
 let router = routers.Router();
 
@@ -9,7 +10,7 @@ let router = routers.Router();
 // const router = require("express").Router();
 // const User = require('../models/post');
 
-router.post("/", (req, res) => {
+router.post("/", (req, res, next) => {
 
     let post = {
         user: req.body.user,
@@ -21,7 +22,7 @@ router.post("/", (req, res) => {
 
     posts.save(function (err, output) {
         if (err) {
-            console.log('게시글 저장 실패 : ', err)
+            next('Post Error')
         } else {
             console.log('게시글 저장 성공 : ', output)
             res.status(200).send(posts)
@@ -29,10 +30,15 @@ router.post("/", (req, res) => {
     })
 });
 
-router.get("/:user", (req, res) => {
+router.get("/:user", (req, res, next) => {
     Post.findById(req.params.user, function (err, output) {
         if (err) {
-            console.log('게시글 조회 실패 : ', err)
+            // let a = {
+            //     HTTP_CODE : 400,
+            //     CODE : -601,
+            //     MSG : "dfdfdf"
+            // }
+            next('Post Error11111111')            
         } else {
             console.log('게시글 조회 성공 : ', output)
             res.status(200).send(output)
@@ -40,21 +46,21 @@ router.get("/:user", (req, res) => {
     })
 });
 
-router.delete("/:user", (req, res) => {
-    Post.findOneAndDelete(req.params.user, function (err, output) {
+router.delete("/:user", (req, res, next) => {    
+    Post.findByIdAndDelete(req.params.user, function (err, output) {
         if (err) {
-            console.log('게시글 삭제 실패 : ', err)
+            next('Post Error')
         } else {
-            console.log('게시글 삭제 성공 : ')
+            console.log('게시글 삭제 성공')
             res.status(204).send()
         }
     })
 });
 
-router.put("/:user", (req, res) => {
-    Post.findOneAndUpdate(req.params.user, { title: req.body.title }, function (err, output) {
+router.put("/:user", (req, res, next) => {
+    Post.findByIdAndUpdate(req.params.user, { title: req.body.title }, function (err, output) {
         if (err) {
-            console.log('게시글 제목 바꾸기 실패 : ', err)
+            next('Post Error')            
         } else {
             console.log('게시글 제목 바꾸기 성공 : ')
             res.status(204).send()
@@ -90,11 +96,11 @@ router.post("/test2", (req, res) => {
         .findById(req.body.postid)
         .populate('user')
         .then(
-            result => { 
+            result => {
                 console.log(result)
                 res.status(200).send(result)
             }
-            )        
+        )
 });
 
 // module.exports = router;

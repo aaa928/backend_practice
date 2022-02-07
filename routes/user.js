@@ -13,8 +13,7 @@ router.get("/sample", (req, res, next) => {
     next('야 에러다111111111111')
 });
 
-router.post("/", middleware, (req, res) => {
-
+router.post("/", (req, res, next) => {
     let user = {
         name: req.body.name,
         phone_number: req.body.phone_number,
@@ -27,7 +26,7 @@ router.post("/", middleware, (req, res) => {
 
     user1.save(function (err, user) {
         if (err) {
-            console.log('실패 : ', err)
+            next('User Error')
         } else {
             console.log('성공')
             res.status(200).send(user1)
@@ -36,13 +35,9 @@ router.post("/", middleware, (req, res) => {
 });
 
 router.get("/:id", (req, res, next) => {
-    console.log('여기다')
-    // async 랑 await 는 언제 넣어줘야하는지?
-    // console.log('dddddddddddddddd' + req.params)
     User.findById(req.params.id, function (err, output) {
         if (err) {
-            console.log('실패 : ', err)
-            next('에러났다222')
+            next('DB Error')
         } else {
             console.log('성공 : ', output)
             res.send(output)
@@ -50,10 +45,10 @@ router.get("/:id", (req, res, next) => {
     })
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", (req, res, next) => {
     User.findByIdAndDelete(req.params.id, function (err, output) {
         if (err) {
-            console.log('실패 : ', err)
+            next('DB Error')
         } else {
             console.log('성공 : ')
             res.status(204).send()
@@ -61,18 +56,17 @@ router.delete("/:id", (req, res) => {
     })
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", (req, res, next) => {
     User.findByIdAndUpdate(req.params.id, { name: req.body.name }, function (err, output) {
         if (err) {
-            console.log('실패 : ', err)
+            next('뭔가 Error')
+            // console.log('실패 : ', err)
         } else {
             console.log('성공 : ')
             res.status(204).send()
         }
     })
 });
-
-
 
 // module.exports = router;
 export default router;

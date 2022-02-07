@@ -101,6 +101,10 @@ app.post('/login', passport.authenticate('local'), (req, res, next) => {
     res.send(req.user)
 });
 
+app.get('/login/user', (req, res, next) => {    
+    console.log(req.user)
+    res.send(req.user)
+});
 
 app.get('/tracking-route', (req, res, next) => {
     if (req.session.viewCount) {

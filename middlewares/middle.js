@@ -24,9 +24,10 @@ let middleware2 = function (req, res, next) {
     })
 }
 
+//  DB 콜, 라우트 콜 에러 났을때 에러미들웨어 호출되도록 하기
 let middleware_error = function (err, req, res, next){
-    console.error(err)
-    res.status(500).send('Something broke!')
+    console.log(err)    
+    res.status(500).send('############################Something broke!')
 }
 
 export { middleware, middleware2, middleware_error }
