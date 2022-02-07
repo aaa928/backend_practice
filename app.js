@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 import user from "./routes/user"
 import User from "./models/user"
 import post from "./routes/post"
+import { middleware_error } from "./middlewares/middle"
 
 import session from "express-session"
 // import MongoStore ""
@@ -14,8 +15,8 @@ import session from "express-session"
  * 패스포트 관련 require
  */
 import passport from "passport"
-import LocalStrategys from "passport-local"
-let LocalStrategy = LocalStrategys.Strategy
+import { Strategy as LocalStrategy } from "passport-local"
+// let LocalStrategy = LocalStrategys.Strategy
 // const LocalStrategy = require('passport-local').Strategy;
 
 const app = express();
@@ -113,6 +114,8 @@ app.get('/tracking-route', (req, res, next) => {
 
 app.use('/user', user);
 app.use('/post', post);
+app.use(middleware_error);
+
 
 app.listen(3000, () => console.log("Listening on port 3000..."));
 

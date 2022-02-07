@@ -24,5 +24,10 @@ let middleware2 = function (req, res, next) {
     })
 }
 
-export { middleware, middleware2 }
+let middleware_error = function (err, req, res, next){
+    console.error(err)
+    res.status(500).send('Something broke!')
+}
+
+export { middleware, middleware2, middleware_error }
 // module.exports = {middleware, middleware2}

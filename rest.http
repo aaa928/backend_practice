@@ -82,3 +82,7 @@ Content-Type: application/json
     "user" : "바보2",
     "pw" : "apple"
 }
+
+
+###
+GET http://localhost:3000/user/sample HTTP/1.1

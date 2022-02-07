@@ -9,6 +9,10 @@ import routers from "express"
 import User from "../models/user"
 let router = routers.Router();
 
+router.get("/sample", (req, res, next) => {
+    next('야 에러다111111111111')
+});
+
 router.post("/", middleware, (req, res) => {
 
     let user = {
@@ -16,6 +20,8 @@ router.post("/", middleware, (req, res) => {
         phone_number: req.body.phone_number,
         gender: req.body.gender
     };
+    // 비구조화 문법
+    // let {name, phone_number, gender } = req.body;
 
     let user1 = new User(user)
 
@@ -29,12 +35,14 @@ router.post("/", middleware, (req, res) => {
     })
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res, next) => {
+    console.log('여기다')
     // async 랑 await 는 언제 넣어줘야하는지?
     // console.log('dddddddddddddddd' + req.params)
     User.findById(req.params.id, function (err, output) {
         if (err) {
             console.log('실패 : ', err)
+            next('에러났다222')
         } else {
             console.log('성공 : ', output)
             res.send(output)
@@ -63,6 +71,8 @@ router.put("/:id", (req, res) => {
         }
     })
 });
+
+
 
 // module.exports = router;
 export default router;
